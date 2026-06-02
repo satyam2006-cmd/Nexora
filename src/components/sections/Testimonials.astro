@@ -1,0 +1,149 @@
+---
+import Section from "./Section.astro";
+
+const testimonials = [
+  {
+    name: "Ava Green",
+    username: "@ava",
+    body: "Nexora made our campaign planning feel sharper and faster.",
+    img: "https://randomuser.me/api/portraits/women/32.jpg",
+    country: "Australia",
+  },
+  {
+    name: "Ana Miller",
+    username: "@ana",
+    body: "The reporting flow finally made SEO decisions easy to explain.",
+    img: "https://randomuser.me/api/portraits/women/68.jpg",
+    country: "Germany",
+  },
+  {
+    name: "Mateo Rossi",
+    username: "@mat",
+    body: "Smooth content systems, clear targets, and no wasted motion.",
+    img: "https://randomuser.me/api/portraits/men/51.jpg",
+    country: "Italy",
+  },
+  {
+    name: "Maya Patel",
+    username: "@maya",
+    body: "Our social calendar finally matched the way our audience buys.",
+    img: "https://randomuser.me/api/portraits/women/53.jpg",
+    country: "India",
+  },
+  {
+    name: "Noah Smith",
+    username: "@noah",
+    body: "Best growth brief we have worked from this year.",
+    img: "https://randomuser.me/api/portraits/men/33.jpg",
+    country: "USA",
+  },
+  {
+    name: "Lucas Stone",
+    username: "@luc",
+    body: "Very customizable strategy and the execution stayed clean.",
+    img: "https://randomuser.me/api/portraits/men/22.jpg",
+    country: "France",
+  },
+  {
+    name: "Haruto Sato",
+    username: "@haru",
+    body: "The landing page and content plan performed beautifully on mobile.",
+    img: "https://randomuser.me/api/portraits/men/85.jpg",
+    country: "Japan",
+  },
+  {
+    name: "Emma Lee",
+    username: "@emma",
+    body: "Loved how quickly the paid and organic plans came together.",
+    img: "https://randomuser.me/api/portraits/women/45.jpg",
+    country: "Canada",
+  },
+  {
+    name: "Carlos Ray",
+    username: "@carl",
+    body: "Great for turning scattered brand ideas into measurable growth.",
+    img: "https://randomuser.me/api/portraits/men/61.jpg",
+    country: "Spain",
+  },
+];
+
+const columns = [false, true, false, true];
+---
+
+<Section id="testimonials">
+  <div class="my-24 grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+    <div>
+      <p class="mb-5 text-sm font-medium uppercase tracking-[0.18em] text-black/45">/ proof in motion /</p>
+      <h2 class="max-w-xl text-5xl font-medium leading-[0.96] sm:text-6xl">
+        Client words, moving like the work does.
+      </h2>
+      <p class="mt-6 max-w-lg text-lg leading-8 text-black/60">
+        A 3D testimonial wall for the landing page, built around growth, clarity, and momentum instead of the old cloned slider.
+      </p>
+    </div>
+
+    <div class="testimonial-stage relative flex h-[520px] w-full items-center justify-center overflow-hidden rounded-[28px] border border-black/10 bg-[#f7f4ef]">
+      <div class="testimonial-tilt flex items-center gap-4">
+        {columns.map((reverse) => (
+          <div class:list={["testimonial-marquee flex flex-col gap-4", reverse && "testimonial-marquee-reverse"]}>
+            {[...testimonials, ...testimonials, ...testimonials].map((review) => (
+              <article class="w-52 rounded-2xl border border-black/10 bg-white p-4 shadow-xl shadow-black/5">
+                <div class="flex items-center gap-3">
+                  <img class="size-10 rounded-full object-cover" src={review.img} alt={`${review.name} portrait`} loading="lazy" />
+                  <div class="min-w-0">
+                    <h3 class="truncate text-sm font-medium text-black">{review.name}</h3>
+                    <p class="truncate text-xs text-black/45">{review.username} / {review.country}</p>
+                  </div>
+                </div>
+                <blockquote class="mt-4 text-sm leading-6 text-black/65">
+                  {review.body}
+                </blockquote>
+              </article>
+            ))}
+          </div>
+        ))}
+      </div>
+      <div class="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#f7f4ef]"></div>
+      <div class="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#f7f4ef]"></div>
+      <div class="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#f7f4ef]"></div>
+      <div class="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#f7f4ef]"></div>
+    </div>
+  </div>
+</Section>
+
+<style>
+  .testimonial-stage {
+    perspective: 320px;
+  }
+
+  .testimonial-tilt {
+    transform: translateX(-60px) translateZ(-90px) rotateX(20deg) rotateY(-10deg) rotateZ(18deg);
+  }
+
+  .testimonial-marquee {
+    animation: testimonial-scroll 42s linear infinite;
+  }
+
+  .testimonial-marquee-reverse {
+    animation-direction: reverse;
+  }
+
+  .testimonial-stage:hover .testimonial-marquee {
+    animation-play-state: paused;
+  }
+
+  @keyframes testimonial-scroll {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-33.333%);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .testimonial-tilt {
+      transform: translateX(-170px) translateZ(-90px) rotateX(20deg) rotateY(-10deg) rotateZ(18deg);
+    }
+  }
+</style>

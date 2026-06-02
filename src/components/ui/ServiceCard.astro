@@ -1,0 +1,164 @@
+---
+import { Image } from "astro:assets";
+import Card from "./Card.astro";
+
+import gob from "../../assets/icon6.svg";
+import wob from "../../assets/icon7.svg";
+
+/* 
+1. Gray card with green title and green on black icon 
+2. Green card with gray title and green on black icon
+3. Black card with gray title and gray on black icon
+*/
+
+const {
+  index,
+  titleTop,
+  titleBottom,
+  img,
+  alt,
+  description = "A focused Nexora Digitals service designed to improve visibility, trust, and measurable growth.",
+  benefits = ["Clear strategy", "Practical execution", "Simple reporting"],
+  cta = "Service Plan",
+} = Astro.props;
+
+const serviceName = `${titleTop} ${titleBottom}`;
+const panelId = `service-panel-${serviceName.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+---
+
+<Card isUnderline={true}>
+  <div
+    class=`service-card ${index === 1 ? 'service-card-light' : ''} h-[300px] w-full sm:h-full lg:gap-[60px] grid custom-grid lg:grid-cols-2 lg:grid-rows-1 p-8 sm:p-[50px] rounded-[45px] ${index === 1 ? 'bg-white text-black' : index === 2 ? 'bg-green' : 'bg-dark text-gray'}`
+  >
+    <h3 class=`flex flex-col col-span-2 lg:col-span-1`>
+      <span class=`w-[fit-content] ${index === 1 ? 'greenhead' : 'whitehead'}`
+        >{titleTop}</span
+      >
+      <span class=`w-[fit-content] ${index === 1 ? 'greenhead' : 'whitehead'}`
+        >{titleBottom}</span
+      >
+    </h3>
+    <picture
+      class="w-full h-full row-span-1 order-1 lg:order-none lg:row-span-2 flex justify-center items-center"
+    >
+      <Image
+        src={img}
+        alt={alt}
+        class="h-[100px] w-auto sm:h-auto sm:w-3/4 object-cover"
+      />
+    </picture>
+    <div class="flex items-end">
+      <button
+        type="button"
+        class="service-info-trigger flex items-center gap-3.5 transition-transform duration-200 hover:translate-x-2"
+        data-service-open={panelId}
+        aria-controls={panelId}
+        aria-expanded="false"
+      >
+        <Image src={index === 1 || index === 2 ? gob : wob} alt={alt} />
+        <span class="hidden sm:block">Service Info</span>
+      </button>
+    </div>
+  </div>
+</Card>
+
+<div
+  id={panelId}
+  class="service-panel fixed inset-0 z-[90] hidden items-center justify-center overflow-y-auto bg-black/70 px-4 py-6 sm:py-8"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby={`${panelId}-title`}
+>
+  <div class="service-panel-card my-auto w-full max-w-3xl rounded-[28px] border border-black bg-gray p-5 shadow-2xl sm:rounded-[35px] sm:p-8 md:p-10">
+    <div class="mb-7 flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+      <div>
+        <p class="mb-3 text-sm font-medium uppercase text-black/60">Nexora Digitals Service</p>
+        <h3 id={`${panelId}-title`} class="text-3xl font-medium leading-tight sm:text-4xl md:text-5xl">{serviceName}</h3>
+      </div>
+      <button
+        type="button"
+        class="service-panel-action service-panel-close w-fit rounded-full bg-dark px-5 py-3 text-white transition hover:bg-black"
+        data-service-close={panelId}
+        aria-label={`Close ${serviceName} details`}
+      >
+        Close
+      </button>
+    </div>
+    <p class="mb-8 text-lg leading-8">{description}</p>
+    <div class="grid gap-4 sm:grid-cols-2">
+      {benefits.map((benefit: string) => (
+        <div class="service-panel-benefit rounded-2xl border border-black bg-white p-4">
+          <span class="mb-3 block h-3 w-3 rounded-full bg-green"></span>
+          <p class="font-medium">{benefit}</p>
+        </div>
+      ))}
+    </div>
+    <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <span class="text-sm text-black/60">Owned and managed by Satyam Bhagat</span>
+      <a
+        class="service-panel-action inline-flex justify-center rounded-2xl bg-dark px-7 py-4 font-medium text-white transition hover:bg-black"
+        href={`mailto:satyambhagat200623@gmail.com?subject=Nexora%20${encodeURIComponent(cta)}`}
+      >
+        Book {cta}
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .custom-grid {
+    grid-template: auto auto;
+  }
+</style>
+
+<script is:inline>
+  if (!window.__nexoraServicePanelsReady) {
+    window.__nexoraServicePanelsReady = true;
+
+    window.__openNexoraServicePanel = (panelId, trigger) => {
+      const panel = document.getElementById(panelId);
+      if (!panel) return;
+      panel.classList.remove("hidden");
+      panel.classList.add("flex");
+      trigger?.setAttribute("aria-expanded", "true");
+      document.body.style.overflow = "hidden";
+    };
+
+    window.__closeNexoraServicePanel = (panelId) => {
+      const panel = document.getElementById(panelId);
+      if (!panel) return;
+      panel.classList.add("hidden");
+      panel.classList.remove("flex");
+      document
+        .querySelector(`[data-service-open="${panelId}"]`)
+        ?.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    };
+
+    document.addEventListener("click", (event) => {
+      const openButton = event.target.closest("[data-service-open]");
+      if (openButton) {
+        window.__openNexoraServicePanel(openButton.dataset.serviceOpen, openButton);
+        return;
+      }
+
+      const closeButton = event.target.closest("[data-service-close]");
+      if (closeButton) {
+        window.__closeNexoraServicePanel(closeButton.dataset.serviceClose);
+        return;
+      }
+
+      const panel = event.target.classList?.contains("service-panel")
+        ? event.target
+        : null;
+      if (panel?.id) window.__closeNexoraServicePanel(panel.id);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") return;
+      document.querySelectorAll(".service-panel:not(.hidden)").forEach((panel) => {
+        window.__closeNexoraServicePanel(panel.id);
+      });
+    });
+  }
+</script>

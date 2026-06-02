@@ -1,0 +1,55 @@
+---
+import { Image } from "astro:assets";
+import s1 from "../../assets/company/company-logo1.svg";
+import s2 from "../../assets/company/company-logo2.svg";
+import s3 from "../../assets/company/company-logo3.svg";
+import s4 from "../../assets/company/company-logo4.svg";
+import s5 from "../../assets/company/company-logo5.svg";
+import s6 from "../../assets/company/company-logo6.svg";
+import Section from "./Section.astro";
+
+const sponsors = [
+  { logo: s6, alt: "Amazon logo" },
+  { logo: s5, alt: "Dribble logo" },
+  { logo: s4, alt: "HubSpot logo" },
+  { logo: s3, alt: "Notion logo" },
+  { logo: s2, alt: "Netflix logo" },
+  { logo: s1, alt: "Zoom logo" },
+];
+---
+
+<Section id="sponsors">
+  <div class="py-12">
+    <p class="mb-6 text-center text-sm font-medium uppercase tracking-[0.18em] text-black/45">
+      Built for the platforms modern brands compete on
+    </p>
+    <div class="logo-loop overflow-hidden border-y border-black/10 py-5">
+      <div class="logo-track flex w-max items-center gap-12">
+        {[...sponsors, ...sponsors, ...sponsors].map((sponsor) => (
+          <div class="flex min-w-36 items-center justify-center grayscale transition duration-200 hover:grayscale-0">
+            <Image src={sponsor.logo} class="h-10 w-auto" alt={sponsor.alt} loading="lazy" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</Section>
+
+<style>
+  .logo-track {
+    animation: logo-scroll 28s linear infinite;
+  }
+
+  .logo-loop:hover .logo-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes logo-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-33.333%);
+    }
+  }
+</style>

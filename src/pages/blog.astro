@@ -1,0 +1,31 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import ArticleCard from "../components/ui/ArticleCard.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+const articles: CollectionEntry<"blog">[] = (await getCollection("blog"))
+  .sort((a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<MainLayout
+  title="Blog | Nexora Digitals"
+  description="Read Nexora Digitals notes on SEO, content, digital strategy, web launches, and brand growth."
+>
+  <section class="px-5 py-12">
+    <div class="mx-auto max-w-[1280px]">
+      <div class="rounded-[28px] bg-[#f7f4ef] px-5 py-10 sm:px-8 lg:px-10">
+        <p class="text-sm font-medium uppercase tracking-[0.18em] text-black/45">/ blog /</p>
+        <h1 class="mt-5 max-w-4xl text-5xl font-medium leading-[0.95] sm:text-7xl">
+          Notes for sharper digital growth.
+        </h1>
+      </div>
+
+      <div class="mt-8 grid gap-8 lg:grid-cols-2">
+        {articles.map((article) => (
+          <ArticleCard article={article} />
+        ))}
+      </div>
+    </div>
+  </section>
+</MainLayout>

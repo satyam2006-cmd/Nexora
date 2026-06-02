@@ -1,0 +1,47 @@
+---
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import SectionTitle from "../ui/SectionTitle.astro";
+import Section from "./Section.astro";
+
+const articles: CollectionEntry<"blog">[] = (await getCollection("blog"))
+  .sort((a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+---
+
+<Section id="cases">
+  <SectionTitle
+    sectionTitle="Blog"
+    description="Fresh notes from Nexora Digitals on SEO, content, launches, web strategy, and digital growth."
+  />
+
+  <div class="rounded-[28px] bg-[#cfff3f] p-4 sm:p-6">
+    <div class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+      <h3 class="text-4xl font-medium leading-none sm:text-6xl">
+        GROWTH <span class="font-normal">NOTES</span>
+      </h3>
+      <a class="w-fit rounded-full bg-black px-5 py-3 text-sm font-medium text-white transition hover:bg-white hover:text-black" href="/blog">
+        Complete blog
+      </a>
+    </div>
+
+    <div class="grid gap-4 lg:grid-cols-3">
+      {articles.map((article) => (
+        <article class="group flex min-h-[300px] flex-col justify-between rounded-[24px] bg-black p-5 text-white transition hover:-translate-y-1">
+          <div class="p-5">
+            <div class="mb-4 flex items-center justify-between gap-3 text-xs uppercase tracking-[0.14em] text-white/45">
+              <span>{article.data.type}</span>
+              <span>{article.data.pubDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span>
+            </div>
+            <h4 class="text-2xl font-medium leading-tight">{article.data.title}</h4>
+            <p class="mt-4 text-sm leading-6 text-white/65">{article.data.summary}</p>
+            <a class="mt-6 inline-flex items-center gap-3 rounded-full bg-[#cfff3f] px-5 py-3 text-sm font-medium text-black transition hover:bg-white" href={`/articles/${article.slug}`}>
+              Read more
+              <span aria-hidden="true">-></span>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</Section>

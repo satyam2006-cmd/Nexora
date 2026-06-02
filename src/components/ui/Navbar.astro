@@ -1,0 +1,145 @@
+---
+import { Astronav } from "astro-navbar";
+
+const menuitems = [
+  { href: '/', label: 'Home' },
+  { href: '/services', label: 'Services' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/#about', label: 'Team' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const navButton = { href: 'mailto:satyambhagat200623@gmail.com?subject=Nexora%20Digital%20Consultation', label: 'Book a consultation' };
+---
+
+<div class="sticky top-4 z-50 px-4">
+  <nav class="site-nav mx-auto w-full max-w-[1280px] rounded-[22px] shadow-2xl backdrop-blur-xl">
+    <header class="flex flex-col lg:flex-row justify-between items-center px-4 py-2 lg:px-5">
+      <Astronav>
+        <div class="flex w-full lg:w-auto items-center justify-between">
+          <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="/favicon.png" class="h-9 w-9 rounded-full object-contain" alt="Nexora Digitals mark" />
+            <span class="site-nav-brand text-xl font-medium tracking-tight">Nexora Digitals</span>
+          </a>
+          <div class="block lg:hidden">
+            <div id="menu-icon" class="site-nav-menu-icon w-8 h-8 cursor-pointer">
+              <!-- Open (hamburger) icon -->
+              <svg id="open-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="w-8 h-8">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+              <!-- Close (X) icon -->
+              <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="w-8 h-8 hidden">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+        
+        <nav class="hidden w-full lg:w-auto mt-2 lg:flex lg:mt-0" id="menu-items">
+          <ul class="site-nav-menu font-medium flex flex-col p-4 lg:p-0 mt-4 rounded-2xl lg:flex-row lg:space-x-8 lg:mt-0 lg:border-0 lg:bg-transparent">
+            {menuitems.map((item) => (
+              <li>
+                <a 
+                  href={item.href} 
+                  class="site-nav-link mobile-nav-link block py-2 px-3 rounded-full transition lg:bg-transparent lg:p-0"
+                  data-close-menu="true"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+            <div class="lg:hidden flex flex-wrap items-center justify-center mt-3 gap-3">
+              <button type="button" class="theme-toggle site-nav-icon-button inline-flex h-12 w-12 items-center justify-center rounded-2xl transition" aria-label="Toggle dark theme" aria-pressed="false">
+                <svg class="theme-icon theme-icon-sun h-5 w-5 hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="4"></circle>
+                  <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+                </svg>
+                <svg class="theme-icon theme-icon-moon h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a7 7 0 1 0 10.5 10.5Z"></path>
+                </svg>
+              </button>
+              <a 
+                class="site-nav-cta mobile-nav-link px-6 py-4 rounded-2xl border border-zinc-900 bg-transparent text-black hover:bg-green hover:text-black inline-flex" 
+                href={navButton.href}
+                data-close-menu="true"
+              >
+                <h2 class="text-center text-xl font-normal leading-7">{navButton.label}</h2>
+              </a>
+            </div>
+          </ul>
+        </nav>
+      </Astronav>
+
+      <div>
+        <div class="hidden lg:flex items-center gap-4">
+          <button type="button" class="theme-toggle site-nav-icon-button inline-flex h-12 w-12 items-center justify-center rounded-2xl transition" aria-label="Toggle dark theme" aria-pressed="false">
+            <svg class="theme-icon theme-icon-sun h-5 w-5 hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+            </svg>
+            <svg class="theme-icon theme-icon-moon h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a7 7 0 1 0 10.5 10.5Z"></path>
+            </svg>
+          </button>
+          <a class="site-nav-cta rounded-2xl border border-zinc-900 bg-transparent px-5 py-3 text-black transition hover:bg-green hover:text-black inline-flex" href={navButton.href}>
+            <h2 class="text-center text-base font-normal leading-6">{navButton.label}</h2>
+          </a>
+        </div>
+      </div>
+    </header>
+  </nav>
+</div>
+
+<script is:inline>
+  const root = document.documentElement;
+  const storedTheme = localStorage.getItem("nexora-theme");
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const initialTheme = storedTheme || (prefersDark ? "dark" : "light");
+  root.dataset.theme = initialTheme;
+  root.classList.toggle("dark", initialTheme === "dark");
+
+  const themeToggles = document.querySelectorAll(".theme-toggle");
+  const syncThemeButton = () => {
+    const isDark = root.dataset.theme === "dark";
+    themeToggles.forEach((themeToggle) => {
+      themeToggle.setAttribute("aria-pressed", String(isDark));
+      themeToggle.querySelector(".theme-icon-sun")?.classList.toggle("hidden", !isDark);
+      themeToggle.querySelector(".theme-icon-moon")?.classList.toggle("hidden", isDark);
+    });
+  };
+  syncThemeButton();
+  themeToggles.forEach((themeToggle) => {
+    themeToggle.addEventListener("click", () => {
+      const nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
+      root.dataset.theme = nextTheme;
+      root.classList.toggle("dark", nextTheme === "dark");
+      localStorage.setItem("nexora-theme", nextTheme);
+      syncThemeButton();
+    });
+  });
+
+  // Get references to the menu icon, open/close icons, and menu items
+  const menuIcon = document.getElementById('menu-icon');
+  const openIcon = document.getElementById('open-icon');
+  const closeIcon = document.getElementById('close-icon');
+  const menuItems = document.getElementById('menu-items');
+  const closeMenuItems = document.querySelectorAll('[data-close-menu="true"]');  // Select all items with the 'data-close-menu' attribute
+
+  // Toggle the menu visibility and icon when the menu icon is clicked
+  menuIcon.addEventListener('click', () => {
+    menuItems.classList.toggle('hidden');  // Toggle the 'hidden' class on the menu
+
+    // Toggle between open and close icons
+    openIcon.classList.toggle('hidden');
+    closeIcon.classList.toggle('hidden');
+  });
+
+  // Close the menu when any item is clicked
+  closeMenuItems.forEach(item => {
+    item.addEventListener('click', () => {
+      menuItems.classList.add('hidden');  // Add the 'hidden' class to hide the menu
+      openIcon.classList.remove('hidden');  // Show the open (hamburger) icon
+      closeIcon.classList.add('hidden');  // Hide the close (X) icon
+    });
+  });
+</script>

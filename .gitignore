@@ -1,0 +1,49 @@
+# Node
+node_modules/
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Build output
+dist/
+.build/
+.astro/
+astro.out.log
+astro.err.log
+
+# Vercel / deployment
+.vercel/
+.vercel/output/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment
+.env
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Cache
+.cache/
+public/.cache/
+
+# Temporary / backups
+*.log
+*.tmp
+.git_backup*
+
+# Misc
+dist-*/
+coverage/

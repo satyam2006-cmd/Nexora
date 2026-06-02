@@ -1,0 +1,37 @@
+---
+import Section from "./Section.astro";
+
+const inclusions = ["SEO", "Paid growth", "Social content", "Analytics"];
+---
+
+<Section id="home">
+  <div class="relative mt-10 min-h-[620px] overflow-hidden rounded-[28px] border border-black/10 bg-black px-5 py-6 text-white sm:px-8 lg:px-10" id="hero">
+    <video class="absolute inset-0 h-full w-full object-cover opacity-70" src="/hero.mp4" autoplay muted loop playsinline></video>
+    <div class="absolute inset-0 bg-black/45"></div>
+
+    <div class="relative z-10 flex min-h-[570px] flex-col justify-between">
+      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-white/15 pb-5 text-xs font-medium uppercase tracking-[0.18em] text-white/70">
+        <span>Nexora Digitals</span>
+        <span>Strategy / Search / Social</span>
+      </div>
+
+      <div class="max-w-4xl py-20">
+        <p class="mb-5 text-sm uppercase tracking-[0.18em] text-white/65">Digital growth studio</p>
+        <h1 class="text-5xl font-medium leading-[0.92] sm:text-7xl lg:text-8xl">
+          Clearer growth for modern brands.
+        </h1>
+        <a class="mt-8 inline-flex rounded-2xl bg-white px-6 py-4 text-base font-medium text-black transition hover:bg-[#b9ff66]" href="/contact">
+          Start a project
+        </a>
+      </div>
+
+      <div class="grid gap-3 border-t border-white/15 pt-5 sm:grid-cols-4">
+        {inclusions.map((item) => (
+          <span class="rounded-full border border-white/20 bg-white/10 px-4 py-3 text-center text-sm text-white/80 backdrop-blur">
+            {item}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+</Section>

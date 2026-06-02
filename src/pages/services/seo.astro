@@ -1,0 +1,48 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import Card from "../../components/ui/Card.astro";
+
+const auditEmail = "mailto:satyambhagat200623@gmail.com?subject=Nexora%20SEO%20Audit";
+
+const pillars = [
+  "Keyword research mapped to real customer intent",
+  "Technical checks for speed, structure, and crawlability",
+  "Landing-page copy improvements for clearer conversion paths",
+  "Simple reporting that explains progress without noise",
+];
+---
+
+<MainLayout
+  title="SEO Services | Nexora Digitals"
+  description="SEO service overview for Nexora Digitals by Satyam Bhagat."
+>
+  <main class="mx-auto max-w-screen-xl px-4 py-16 lg:px-6 lg:py-24">
+    <div class="grid items-center gap-12 md:grid-cols-2">
+      <div>
+        <p class="mb-4 text-lg font-medium text-green">Nexora Digitals</p>
+        <h1 class="mb-6 text-5xl font-medium leading-none md:text-6xl">
+          Search visibility with a cleaner growth plan.
+        </h1>
+        <p class="mb-8 text-lg leading-8">
+          This SEO service page is part of the Nexora Digitals internship demo, owned and managed by Satyam Bhagat. It presents a practical search strategy for brands that want better discovery, stronger content, and measurable improvements.
+        </p>
+        <a href={auditEmail} class="inline-flex rounded-2xl bg-dark px-8 py-4 text-lg font-medium text-white transition hover:bg-green hover:text-dark">
+          Book an SEO audit
+        </a>
+      </div>
+      <Card>
+        <div class="p-8 md:p-10">
+          <h2 class="mb-6 text-3xl font-medium">What the audit covers</h2>
+          <ul class="space-y-4">
+            {pillars.map((pillar) => (
+              <li class="flex gap-3">
+                <span class="mt-1 h-5 w-5 shrink-0 rounded-full bg-green"></span>
+                <span>{pillar}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </Card>
+    </div>
+  </main>
+</MainLayout>

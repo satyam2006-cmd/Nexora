@@ -1,0 +1,40 @@
+---
+import SectionTitle from "../ui/SectionTitle.astro";
+import TeamCard from "../ui/TeamCard.astro";
+import Section from "./Section.astro";
+
+const description =
+  "Nexora Digitals is independently owned, managed, designed, and developed by Satyam Bhagat.";
+
+const team = [
+  {
+    pic: "/picnew.jpeg",
+    name: "Satyam Bhagat",
+    role: "Owner, Manager, Designer & Developer",
+    description:
+      "Satyam handles the complete Nexora Digitals experience: strategy, website design, content planning, frontend development, branding, and presentation.",
+    link: "https://www.linkedin.com/in/satyam-bhagat2006/",
+  },
+];
+---
+
+<Section id="about">
+  <div class="mt-[140px]">
+    <SectionTitle sectionTitle="Team" description={description} />
+    <div class="mx-auto grid max-w-xl grid-cols-1 gap-10">
+      {
+        team.map((member, index) => (
+          <TeamCard
+            key={index}
+            pic={member.pic}
+            name={member.name}
+            role={member.role}
+            description={member.description}
+            link={member.link}
+            github="https://github.com/satyam2006-cmd"
+          />
+        ))
+      }
+    </div>
+  </div>
+</Section>

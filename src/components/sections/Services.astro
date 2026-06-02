@@ -1,0 +1,106 @@
+---
+import SectionTitle from "../ui/SectionTitle.astro";
+import ServiceCard from "../ui/ServiceCard.astro";
+import Section from "./Section.astro";
+
+import c1 from "../../assets/pics/card-pic1.png";
+import c2 from "../../assets/pics/card-pic2.png";
+import c3 from "../../assets/pics/card-pic3.png";
+import c4 from "../../assets/pics/card-pic4.png";
+import c5 from "../../assets/pics/card-pic5.png";
+import c6 from "../../assets/pics/card-pic6.png";
+
+const cards = [
+  {
+    index: 1,
+    titleTop: "Search Engine",
+    titleBottom: "Optimization",
+    img: c1,
+    alt: "SEO",
+    description:
+      "We improve search visibility with keyword planning, technical checks, content updates, and simple reporting that shows what is growing.",
+    benefits: ["Higher organic reach", "Cleaner page structure", "Better local discovery", "Actionable search insights"],
+    cta: "SEO Audit",
+  },
+  {
+    index: 2,
+    titleTop: "Pay-per-click",
+    titleBottom: "advertising",
+    img: c2,
+    alt: "PPC advertising",
+    description:
+      "We plan focused paid campaigns with clear audiences, landing-page alignment, and performance tracking so ad spend has a purpose.",
+    benefits: ["Fast campaign launch", "Targeted traffic", "Budget control", "Conversion tracking"],
+    cta: "PPC Plan",
+  },
+  {
+    index: 3,
+    titleTop: "Social Media",
+    titleBottom: "Marketing",
+    img: c3,
+    alt: "Social media marketing",
+    description:
+      "We create content systems for Instagram, LinkedIn, and short-form channels so brands can show up consistently and build trust.",
+    benefits: ["Content pillars", "Audience engagement", "Posting calendar", "Creative direction"],
+    cta: "Social Strategy",
+  },
+  {
+    index: 1,
+    titleTop: "Email",
+    titleBottom: "Marketing",
+    img: c4,
+    alt: "Email marketing",
+    description:
+      "We design practical email journeys for announcements, lead nurturing, and follow-up sequences that keep customers moving.",
+    benefits: ["Lead nurturing", "Campaign copy", "Simple automations", "Customer follow-up"],
+    cta: "Email Flow",
+  },
+  {
+    index: 2,
+    titleTop: "Content",
+    titleBottom: "Creation",
+    img: c5,
+    alt: "Content creation",
+    description:
+      "We build landing-page copy, captions, campaign assets, and content ideas that make the brand sound clear and memorable.",
+    benefits: ["Sharper messaging", "Reusable assets", "Brand voice", "Campaign-ready copy"],
+    cta: "Content Plan",
+  },
+  {
+    index: 3,
+    titleTop: "Analytics and",
+    titleBottom: "Tracking",
+    img: c6,
+    alt: "Analytics tracking",
+    description:
+      "We turn campaign activity into simple dashboards, weekly insights, and next-step recommendations that make growth measurable.",
+    benefits: ["Dashboard setup", "Weekly insights", "Performance clarity", "Better decisions"],
+    cta: "Analytics Setup",
+  },
+];
+
+const description =
+  "Nexora Digitals offers focused marketing services managed by Satyam Bhagat to help brands grow with clarity, trust, and measurable direction.";
+---
+
+<Section id="services">
+  <div class="mt-[140px] mb-5">
+    <SectionTitle sectionTitle="Services" description={description} />
+    <div class="grid lg:grid-cols-2 lg:grid-rows-3 gap-10">
+      {
+        cards.map((card) => (
+          <ServiceCard
+            index={card.index}
+            titleTop={card.titleTop}
+            titleBottom={card.titleBottom}
+            img={card.img}
+            alt={card.alt}
+            description={card.description}
+            benefits={card.benefits}
+            cta={card.cta}
+          />
+        ))
+      }
+    </div>
+  </div>
+</Section>
