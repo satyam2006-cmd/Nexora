@@ -1,14 +1,12 @@
 # Nexora Digitals
 
-Nexora Digitals is a digital marketing agency website created by Satyam Bhagat for an internship task. The project presents a professional agency concept with sections for services, case studies, testimonials, owner details, and consultation contact.
+Nexora Digitals is built to represent a contemporary digital marketing agency focused on helping businesses grow their online presence through strategic marketing solutions. The website emphasizes clean design, responsive layouts, and a user-friendly experience across all devices.
 
 ## Project Focus
 
 - Professional digital marketing agency branding.
 - Clean homepage, about, services, work, testimonials, and contact sections.
-- `Logo.png` is used as the browser favicon.
-- `favicon.png` is used as the visible brand mark in the navigation and footer.
-- Consultation email: `satyambhagat200623@gmail.com`.
+- Consultation email: `digitalsnexora0@gmail.com`.
 - Developer contact: `https://github.com/satyam2006-cmd`.
 
 ## Commands
