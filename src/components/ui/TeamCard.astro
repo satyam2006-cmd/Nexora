@@ -5,26 +5,26 @@ const { pic, name, role, description, link, github } = Astro.props;
 ---
 
 <Card isUnderline={true}>
-  <div class="p-[60px]">
-    <div class="flex flex-col sm:flex-row relative">
+  <div class="p-6 sm:p-8 md:p-10 lg:p-[60px]">
+    <div class="flex flex-col sm:flex-row gap-4 sm:gap-5 relative mb-4 sm:mb-0">
       <picture>
-        <img src={pic} alt={name} class="h-28 w-28 rounded-full border border-black object-cover shadow-[0_0_0_12px_#b9ff66]" loading="lazy" />
+        <img src={pic} alt={name} class="h-24 w-24 sm:h-28 sm:w-28 rounded-full border border-black object-cover shadow-[0_0_0_12px_#b9ff66] flex-shrink-0" loading="lazy" />
       </picture>
-      <div class="flex flex-col justify-end sm:ml-5">
+      <div class="flex flex-col justify-end flex-1">
         <h3 class="text-lg font-medium">{name}</h3>
         <p class="text-sm font-normal">{role}</p>
       </div>
-      <a href={link} class="absolute right-0 top-0 rounded-full bg-black px-3 py-2 text-sm font-medium text-[#b9ff66] transition hover:bg-[#b9ff66] hover:text-black" target="_blank" rel="noopener noreferrer">
+      <a href={link} class="absolute right-0 top-0 sm:relative sm:ml-auto rounded-full bg-black px-3 py-2 text-sm font-medium text-[#b9ff66] transition hover:bg-[#b9ff66] hover:text-black self-start sm:self-center flex-shrink-0" target="_blank" rel="noopener noreferrer">
         in
       </a>
     </div>
-    <div class="w-full h-[1px] bg-black my-7"></div>
-    <div>{description}</div>
-    <div class="mt-8 flex flex-wrap gap-3">
-      <a class="rounded-2xl bg-dark px-5 py-3 text-white transition hover:bg-green hover:text-dark" href={github} target="_blank" rel="noopener noreferrer">
+    <div class="w-full h-[1px] bg-black my-6 sm:my-7"></div>
+    <div class="text-sm sm:text-base">{description}</div>
+    <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row flex-wrap gap-3">
+      <a class="rounded-2xl bg-dark px-4 sm:px-5 py-2 sm:py-3 text-white text-sm sm:text-base transition hover:bg-green hover:text-dark text-center" href={github} target="_blank" rel="noopener noreferrer">
         View developer GitHub
       </a>
-      <a class="rounded-2xl border border-dark px-5 py-3 transition hover:bg-dark hover:text-white" href={link} target="_blank" rel="noopener noreferrer">
+      <a class="rounded-2xl border border-dark px-4 sm:px-5 py-2 sm:py-3 text-sm sm:text-base transition hover:bg-dark hover:text-white text-center" href={link} target="_blank" rel="noopener noreferrer">
         LinkedIn profile
       </a>
     </div>
