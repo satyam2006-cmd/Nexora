@@ -1,7 +1,7 @@
 ---
 import Card from "./Card.astro";
 
-const { pic, name, role, description, link, github } = Astro.props;
+const { pic, name, role, description } = Astro.props;
 ---
 
 <Card isUnderline={true}>
@@ -14,19 +14,8 @@ const { pic, name, role, description, link, github } = Astro.props;
         <h3 class="text-lg font-medium">{name}</h3>
         <p class="text-sm font-normal">{role}</p>
       </div>
-      <a href={link} class="absolute right-0 top-0 sm:relative sm:ml-auto rounded-full bg-black px-3 py-2 text-sm font-medium text-[#b9ff66] transition hover:bg-[#b9ff66] hover:text-black self-start sm:self-center flex-shrink-0" target="_blank" rel="noopener noreferrer">
-        in
-      </a>
     </div>
     <div class="w-full h-[1px] bg-black my-6 sm:my-7"></div>
     <div class="text-sm sm:text-base">{description}</div>
-    <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row flex-wrap gap-3">
-      <a class="rounded-2xl bg-dark px-4 sm:px-5 py-2 sm:py-3 text-white text-sm sm:text-base transition hover:bg-green hover:text-dark text-center" href={github} target="_blank" rel="noopener noreferrer">
-        View developer GitHub
-      </a>
-      <a class="rounded-2xl border border-dark px-4 sm:px-5 py-2 sm:py-3 text-sm sm:text-base transition hover:bg-dark hover:text-white text-center" href={link} target="_blank" rel="noopener noreferrer">
-        LinkedIn profile
-      </a>
-    </div>
   </div>
 </Card>

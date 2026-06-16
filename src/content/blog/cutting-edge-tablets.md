@@ -2,7 +2,7 @@
 title: 'Unleash Creativity With These Cutting-Edge Tablets'
 pubDate: 2024-01-14
 author: 'Satyam Bhagat'
-authImage: 'https://github.com/satyam2006-cmd.png'
+authImage: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=64&h=64'
 image: 'image5.png'
 tags: ['tablets', 'gadgets']
 slug: unleash-creativity-with-these-cutting-edge-tablets

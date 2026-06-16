@@ -2,7 +2,7 @@
 title: 'Building a Modern Digital Presence'
 pubDate: 2024-01-17
 author: 'Satyam Bhagat'
-authImage: 'https://github.com/satyam2006-cmd.png'
+authImage: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=64&h=64'
 image: 'image3.png'
 tags: ['branding', 'marketing', 'strategy']
 slug: building-a-modern-digital-presence

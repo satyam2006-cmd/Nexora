@@ -2,7 +2,7 @@
 title: "Capturing Life's Moments with Canon Excellence"
 pubDate: 2024-01-15
 author: 'Satyam Bhagat'
-authImage: 'https://github.com/satyam2006-cmd.png'
+authImage: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=64&h=64'
 image: 'image4.png'
 tags: ['photography', 'canon', 'tech']
 slug: capturing-lifes-moments-with-canon-excellence
